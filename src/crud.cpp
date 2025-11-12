@@ -18,7 +18,7 @@ bool CRUD::crear_producto(vector<Producto>& inventario) {
     Menu::mostrar_encabezado("CREAR NUEVO PRODUCTO");
     
     if (inventario.size() >= MAX_PRODUCTOS) {
-        Menu::mostrar_mensaje("error: inventario lleno", true);
+        Menu::mostrar_mensaje("Error: Inventario lleno", true);
         Menu::pausar();
         return false;
     }
@@ -27,23 +27,23 @@ bool CRUD::crear_producto(vector<Producto>& inventario) {
     nuevo.id = generar_id(inventario);
     nuevo.activo = PRODUCTO_ACTIVO;
     
-    nuevo.nombre = Menu::leer_texto("  nombre del producto: ");
-    nuevo.categoria = Menu::leer_texto("  categoría: ");
-    nuevo.precio = Menu::leer_flotante("  precio: ");
-    nuevo.stock = Menu::leer_entero("  stock: ");
+    nuevo.nombre = Menu::leer_texto("  Nombre del producto: ");
+    nuevo.categoria = Menu::leer_texto("  Categoría: ");
+    nuevo.precio = Menu::leer_flotante("  Precio: ");
+    nuevo.stock = Menu::leer_entero("  Stock: ");
     
     if (!nuevo.es_valido()) {
-        Menu::mostrar_mensaje("error: datos invalidos", true);
+        Menu::mostrar_mensaje("Error: Datos inválidos", true);
         Menu::pausar();
         return false;
     }
     
     inventario.push_back(nuevo);
     
-    GestorArchivos::registrar_log("producto creado: id=" + to_string(nuevo.id) + 
+    GestorArchivos::registrar_log("Producto creado: ID=" + to_string(nuevo.id) + 
                                   " nombre=" + nuevo.nombre);
     
-    Menu::mostrar_mensaje("producto creado exitosamente con id: " + to_string(nuevo.id));
+    Menu::mostrar_mensaje("Producto creado exitosamente con ID: " + to_string(nuevo.id));
     Menu::pausar();
     return true;
 }
@@ -123,24 +123,24 @@ void CRUD::buscar_producto(const vector<Producto>& inventario) {
     Menu::limpiar_pantalla();
     Menu::mostrar_encabezado("BUSCAR PRODUCTO");
     
-    cout << "  1. buscar por id" << endl;
-    cout << "  2. buscar por nombre" << endl;
-    cout << "\n  seleccione opción: ";
+    cout << "  1. Buscar por ID" << endl;
+    cout << "  2. Buscar por nombre" << endl;
+    cout << "\n  Seleccione opción: ";
     
     int opcion = Menu::leer_entero("");
     
     if (opcion == 1) {
-        int id_buscar = Menu::leer_entero("\n  ingrese id: ");
+        int id_buscar = Menu::leer_entero("\n  Ingrese ID: ");
         
         for (const auto& p : inventario) {
             if (p.id == id_buscar && p.activo == PRODUCTO_ACTIVO) {
-                cout << "\n  producto encontrado:\n";
+                cout << "\n  Producto encontrado:\n";
                 p.mostrar();
                 Menu::pausar();
                 return;
             }
         }
-        Menu::mostrar_mensaje("producto no encontrado", true);
+        Menu::mostrar_mensaje("Producto no encontrado", true);
         
     } else if (opcion == 2) {
         string nombre_buscar = Menu::leer_texto("\n  Ingrese nombre: ");
@@ -228,49 +228,49 @@ bool CRUD::actualizar_producto(vector<Producto>& inventario) {
     Menu::limpiar_pantalla();
     Menu::mostrar_encabezado("ACTUALIZAR PRODUCTO");
     
-    int id_actualizar = Menu::leer_entero("  ingrese id del producto: ");
+    int id_actualizar = Menu::leer_entero("  Ingrese ID del producto: ");
     
     int indice = buscar_por_id(inventario, id_actualizar);
     
     if (indice == -1) {
-        Menu::mostrar_mensaje("producto no encontrado", true);
+        Menu::mostrar_mensaje("Producto no encontrado", true);
         Menu::pausar();
         return false;
     }
     
     Producto& p = inventario[indice];
     
-    cout << "\n  producto actual:\n";
-    cout << "  nombre:    " << p.nombre << endl;
-    cout << "  categoría: " << p.categoria << endl;
-    cout << "  precio:    $" << fixed << setprecision(2) << p.precio << endl;
-    cout << "  stock:     " << p.stock << endl << endl;
+    cout << "\n  Producto actual:\n";
+    cout << "  Nombre:    " << p.nombre << endl;
+    cout << "  Categoría: " << p.categoria << endl;
+    cout << "  Precio:    $" << fixed << setprecision(2) << p.precio << endl;
+    cout << "  Stock:     " << p.stock << endl << endl;
     
-    cout << "  nuevo nombre (enter para mantener): ";
+    cout << "  Nuevo nombre (enter para mantener): ";
     string temp = Menu::leer_texto("");
     if (!temp.empty()) {
         p.nombre = temp;
     }
     
-    cout << "  nueva categoría (enter para mantener): ";
+    cout << "  Nueva categoría (enter para mantener): ";
     temp = Menu::leer_texto("");
     if (!temp.empty()) {
         p.categoria = temp;
     }
     
-    float nuevo_precio = Menu::leer_flotante("  nuevo precio (0 para mantener): ");
+    float nuevo_precio = Menu::leer_flotante("  Nuevo precio (0 para mantener): ");
     if (nuevo_precio > 0) {
         p.precio = nuevo_precio;
     }
     
-    int nuevo_stock = Menu::leer_entero("  nuevo stock (-1 para mantener): ");
+    int nuevo_stock = Menu::leer_entero("  Nuevo stock (-1 para mantener): ");
     if (nuevo_stock >= 0) {
         p.stock = nuevo_stock;
     }
     
-    GestorArchivos::registrar_log("producto actualizado: id=" + to_string(id_actualizar));
+    GestorArchivos::registrar_log("Producto actualizado: ID=" + to_string(id_actualizar));
     
-    Menu::mostrar_mensaje("producto actualizado exitosamente");
+    Menu::mostrar_mensaje("Producto actualizado exitosamente");
     Menu::pausar();
     return true;
 }
@@ -280,32 +280,32 @@ bool CRUD::eliminar_producto(vector<Producto>& inventario) {
     Menu::limpiar_pantalla();
     Menu::mostrar_encabezado("ELIMINAR PRODUCTO");
     
-    int id_eliminar = Menu::leer_entero("  ingrese id del producto: ");
+    int id_eliminar = Menu::leer_entero("  Ingrese ID del producto: ");
     
     int indice = buscar_por_id(inventario, id_eliminar);
     
     if (indice == -1) {
-        Menu::mostrar_mensaje("producto no encontrado", true);
+        Menu::mostrar_mensaje("Producto no encontrado", true);
         Menu::pausar();
         return false;
     }
     
     Producto& p = inventario[indice];
     
-    cout << "\n  producto a eliminar:\n";
-    cout << "  id:     " << p.id << endl;
-    cout << "  nombre: " << p.nombre << endl;
-    cout << "  precio: $" << fixed << setprecision(2) << p.precio << endl << endl;
+    cout << "\n  Producto a eliminar:\n";
+    cout << "  ID:     " << p.id << endl;
+    cout << "  Nombre: " << p.nombre << endl;
+    cout << "  Precio: $" << fixed << setprecision(2) << p.precio << endl << endl;
     
-    if (Menu::confirmar("  confirmar eliminación (s/n): ")) {
+    if (Menu::confirmar("  Confirmar eliminación (s/n): ")) {
         p.activo = PRODUCTO_INACTIVO;
         
-        GestorArchivos::registrar_log("producto eliminado: id=" + to_string(id_eliminar) + 
+        GestorArchivos::registrar_log("Producto eliminado: ID=" + to_string(id_eliminar) + 
                                       " nombre=" + p.nombre);
         
-        Menu::mostrar_mensaje("producto eliminado exitosamente");
+        Menu::mostrar_mensaje("Producto eliminado exitosamente");
     } else {
-        Menu::mostrar_mensaje("operación cancelada");
+        Menu::mostrar_mensaje("Operación cancelada");
     }
     
     Menu::pausar();

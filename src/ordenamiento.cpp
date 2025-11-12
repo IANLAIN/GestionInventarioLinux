@@ -20,6 +20,9 @@ void Ordenamiento::ordenar(vector<Producto>& inventario, Criterio criterio) {
         case POR_NOMBRE:
             std::sort(inventario.begin(), inventario.end(), comparar_nombre);
             break;
+        case POR_CATEGORIA:
+            std::sort(inventario.begin(), inventario.end(), comparar_categoria);
+            break;
         case POR_PRECIO:
             std::sort(inventario.begin(), inventario.end(), comparar_precio);
             break;
@@ -41,6 +44,13 @@ bool Ordenamiento::comparar_nombre(const Producto& a, const Producto& b) {
     if (!a.activo) return false;
     if (!b.activo) return true;
     return a.nombre < b.nombre;
+}
+
+// comparar por categoria
+bool Ordenamiento::comparar_categoria(const Producto& a, const Producto& b) {
+    if (!a.activo) return false;
+    if (!b.activo) return true;
+    return a.categoria < b.categoria;
 }
 
 // comparar por precio

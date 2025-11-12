@@ -68,7 +68,7 @@ int main() {
         Menu::mostrar_principal();
         
         int activos = CRUD::contar_activos(inventario);
-        cout << "\n  productos activos: " << activos << endl;
+        cout << "\n  Productos activos: " << activos << endl;
         
         int opcion = Menu::obtener_opcion_principal();
         procesar_opcion_principal(opcion, inventario, continuar);
@@ -76,9 +76,9 @@ int main() {
     
     // guardar datos antes de salir
     GestorArchivos::guardar_binario(ARCHIVO_BIN, inventario);
-    GestorArchivos::registrar_log("sistema finalizado correctamente");
+    GestorArchivos::registrar_log("Sistema finalizado correctamente");
     
-    cout << "\n  guardando datos..." << endl;
+    cout << "\n  Guardando datos..." << endl;
     sleep(1);
     cout << "  hasta pronto\n" << endl;
     
@@ -119,14 +119,14 @@ void procesar_opcion_principal(int opcion, vector<Producto>& inventario, bool& c
             {
                 int criterio = Menu::obtener_criterio_ordenamiento();
                 
-                if (criterio >= 1 && criterio <= 4) {
+                if (criterio >= 1 && criterio <= 5) {
                     Ordenamiento::ordenar(inventario, 
                         static_cast<Ordenamiento::Criterio>(criterio - 1));
                     GestorArchivos::guardar_binario(ARCHIVO_BIN, inventario);
-                    GestorArchivos::registrar_log("inventario ordenado");
-                    Menu::mostrar_mensaje("inventario ordenado exitosamente");
+                    GestorArchivos::registrar_log("Inventario ordenado");
+                    Menu::mostrar_mensaje("Inventario ordenado exitosamente");
                 } else {
-                    Menu::mostrar_mensaje("criterio inválido", true);
+                    Menu::mostrar_mensaje("Criterio inválido", true);
                 }
                 Menu::pausar();
             }
@@ -134,9 +134,9 @@ void procesar_opcion_principal(int opcion, vector<Producto>& inventario, bool& c
             
         case 7: // Exportar a texto
             if (GestorArchivos::exportar_texto(ARCHIVO_TXT, inventario)) {
-                Menu::mostrar_mensaje("exportación completada: " + ARCHIVO_TXT);
+                Menu::mostrar_mensaje("Exportación completada: " + ARCHIVO_TXT);
             } else {
-                Menu::mostrar_mensaje("error al exportar", true);
+                Menu::mostrar_mensaje("Error al exportar", true);
             }
             Menu::pausar();
             break;
@@ -160,20 +160,20 @@ void procesar_opcion_principal(int opcion, vector<Producto>& inventario, bool& c
             {
                 Menu::limpiar_pantalla();
                 Menu::mostrar_encabezado("APAGAR SISTEMA");
-                cout << "\n  ¿está seguro que desea apagar el sistema? (s/n): ";
+                cout << "\n  ¿Está seguro que desea apagar el sistema? (s/n): ";
                 string respuesta;
                 cin >> respuesta;
                 cin.ignore();
                 
                 if (respuesta == "s" || respuesta == "S") {
                     GestorArchivos::guardar_binario(ARCHIVO_BIN, inventario);
-                    GestorArchivos::registrar_log("sistema apagado por el usuario");
-                    cout << "\n  apagando sistema..." << endl;
+                    GestorArchivos::registrar_log("Sistema apagado por el usuario");
+                    cout << "\n  Apagando sistema..." << endl;
                     sleep(2);
                     system("sudo shutdown -h now");
                     continuar = false;
                 } else {
-                    Menu::mostrar_mensaje("operación cancelada");
+                    Menu::mostrar_mensaje("Operación cancelada");
                     Menu::pausar();
                 }
             }
@@ -183,20 +183,20 @@ void procesar_opcion_principal(int opcion, vector<Producto>& inventario, bool& c
             {
                 Menu::limpiar_pantalla();
                 Menu::mostrar_encabezado("REINICIAR SISTEMA");
-                cout << "\n  ¿está seguro que desea reiniciar el sistema? (s/n): ";
+                cout << "\n  ¿Está seguro que desea reiniciar el sistema? (s/n): ";
                 string respuesta;
                 cin >> respuesta;
                 cin.ignore();
                 
                 if (respuesta == "s" || respuesta == "S") {
                     GestorArchivos::guardar_binario(ARCHIVO_BIN, inventario);
-                    GestorArchivos::registrar_log("sistema reiniciado por el usuario");
-                    cout << "\n  reiniciando sistema..." << endl;
+                    GestorArchivos::registrar_log("Sistema reiniciado por el usuario");
+                    cout << "\n  Reiniciando sistema..." << endl;
                     sleep(2);
                     system("sudo reboot");
                     continuar = false;
                 } else {
-                    Menu::mostrar_mensaje("operación cancelada");
+                    Menu::mostrar_mensaje("Operación cancelada");
                     Menu::pausar();
                 }
             }
@@ -220,7 +220,7 @@ void procesar_opcion_principal(int opcion, vector<Producto>& inventario, bool& c
             break;
             
         default:
-            Menu::mostrar_mensaje("opción inválida", true);
+            Menu::mostrar_mensaje("Opción inválida", true);
             Menu::pausar();
     }
 }

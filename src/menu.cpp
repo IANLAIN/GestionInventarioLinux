@@ -46,10 +46,11 @@ void Menu::mostrar_ordenamiento() {
     cout << "╔════════════════════════════════════════════════╗" << endl;
     cout << "║          ORDENAR INVENTARIO                    ║" << endl;
     cout << "╚════════════════════════════════════════════════╝" << endl;
-    cout << "\n  1. ordenar por id" << endl;
-    cout << "  2. ordenar por nombre" << endl;
-    cout << "  3. ordenar por precio" << endl;
-    cout << "  4. ordenar por stock" << endl;
+    cout << "\n  1. Ordenar por ID" << endl;
+    cout << "  2. Ordenar por nombre" << endl;
+    cout << "  3. Ordenar por categoría" << endl;
+    cout << "  4. Ordenar por precio" << endl;
+    cout << "  5. Ordenar por stock" << endl;
 }
 
 // obtener criterio de ordenamiento

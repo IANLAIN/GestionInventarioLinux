@@ -13,6 +13,7 @@ public:
     enum Criterio {
         POR_ID,
         POR_NOMBRE,
+        POR_CATEGORIA,
         POR_PRECIO,
         POR_STOCK
     };
@@ -24,6 +25,7 @@ private:
     // comparadores personalizados
     static bool comparar_id(const Producto& a, const Producto& b);
     static bool comparar_nombre(const Producto& a, const Producto& b);
+    static bool comparar_categoria(const Producto& a, const Producto& b);
     static bool comparar_precio(const Producto& a, const Producto& b);
     static bool comparar_stock(const Producto& a, const Producto& b);
 };
