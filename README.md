@@ -83,7 +83,7 @@ sudo -u inventario /opt/inventario/bin/inventario
 | 3 | Buscar producto | Búsqueda por ID o nombre |
 | 4 | Actualizar producto | Modificar datos de producto existente |
 | 5 | Eliminar producto | Borrado lógico (marca como inactivo) |
-| 6 | Ordenar inventario | Por ID, nombre, precio o stock |
+| 6 | Ordenar inventario | Por ID, nombre, categoría, precio o stock |
 | 7 | Exportar a texto | Generar productos.txt legible |
 | 8 | Crear respaldo | Respaldo manual de productos.dat |
 | 9 | Manual de uso | Visualizar documentación en Nano |
