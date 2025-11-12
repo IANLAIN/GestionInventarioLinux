@@ -80,7 +80,7 @@ int main() {
     
     cout << "\n  Guardando datos..." << endl;
     sleep(1);
-    cout << "  hasta pronto\n" << endl;
+    cout << "  Hasta pronto\n" << endl;
     
     return 0;
 }

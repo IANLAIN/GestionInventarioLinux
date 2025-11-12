@@ -2,26 +2,12 @@
 // implementacion del gestor de archivos con encriptacion automatica
 
 #include "../include/archivos.h"
-
-using namespace std;
 #include "../include/constantes.h"
-
-using namespace std;
 #include "../include/encriptacion.h"
-
-using namespace std;
 #include <fstream>
-
-using namespace std;
 #include <iostream>
-
-using namespace std;
 #include <ctime>
-
-using namespace std;
 #include <iomanip>
-
-using namespace std;
 #include <sys/stat.h>
 
 using namespace std;
@@ -32,7 +18,7 @@ vector<Producto> GestorArchivos::cargar_binario(const string& ruta) {
     ifstream archivo(ruta, ios::binary);
     
     if (!archivo.is_open()) {
-        registrar_log("archivo binario no encontrado, primera ejecucion");
+        registrar_log("Archivo binario no encontrado, primera ejecución");
         return productos;
     }
     
@@ -70,7 +56,7 @@ vector<Producto> GestorArchivos::cargar_binario(const string& ruta) {
     }
     
     archivo.close();
-    registrar_log("datos cargados y desencriptados: " + to_string(cantidad) + " productos");
+    registrar_log("Datos cargados y desencriptados: " + to_string(cantidad) + " productos");
     return productos;
 }
 
@@ -80,7 +66,7 @@ bool GestorArchivos::guardar_binario(const string& ruta,
     ofstream archivo(ruta, ios::binary);
     
     if (!archivo.is_open()) {
-        registrar_log("error: no se pudo abrir archivo para escritura");
+        registrar_log("Error: No se pudo abrir archivo para escritura");
         return false;
     }
     
@@ -110,7 +96,7 @@ bool GestorArchivos::guardar_binario(const string& ruta,
     }
     
     archivo.close();
-    registrar_log("datos encriptados y guardados: " + to_string(cantidad) + " productos");
+    registrar_log("Datos encriptados y guardados: " + to_string(cantidad) + " productos");
     return true;
 }
 
@@ -120,7 +106,7 @@ bool GestorArchivos::exportar_texto(const string& ruta,
     ofstream archivo(ruta);
     
     if (!archivo.is_open()) {
-        registrar_log("error: no se pudo crear archivo de texto");
+        registrar_log("Error: No se pudo crear archivo de texto");
         return false;
     }
     
@@ -141,7 +127,7 @@ bool GestorArchivos::exportar_texto(const string& ruta,
     }
     
     archivo.close();
-    registrar_log("inventario exportado a texto: " + to_string(contador) + " productos");
+    registrar_log("Inventario exportado a texto: " + to_string(contador) + " productos");
     return true;
 }
 
@@ -149,7 +135,7 @@ bool GestorArchivos::exportar_texto(const string& ruta,
 vector<Producto> GestorArchivos::importar_texto(const string& ruta) {
     vector<Producto> productos;
     // implementacion basica - se puede expandir segun formato
-    registrar_log("importacion desde texto iniciada: " + ruta);
+    registrar_log("Importación desde texto iniciada: " + ruta);
     return productos;
 }
 

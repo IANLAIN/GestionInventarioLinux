@@ -2,11 +2,7 @@
 // implementacion de cifrado cesar
 
 #include "../include/encriptacion.h"
-
-using namespace std;
 #include "../include/constantes.h"
-
-using namespace std;
 #include <cctype>
 
 using namespace std;

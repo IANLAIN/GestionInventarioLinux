@@ -2,14 +2,8 @@
 // implementacion de la clase producto
 
 #include "../include/producto.h"
-
-using namespace std;
 #include "../include/constantes.h"
-
-using namespace std;
 #include <iostream>
-
-using namespace std;
 #include <iomanip>
 
 using namespace std;
@@ -35,11 +29,11 @@ bool Producto::es_valido() const {
 // mostrar informacion del producto
 void Producto::mostrar() const {
     cout << "  ─────────────────────────────────────" << endl;
-    cout << "  id:        " << id << endl;
-    cout << "  nombre:    " << nombre << endl;
-    cout << "  categoría: " << categoria << endl;
-    cout << "  precio:    $" << fixed << setprecision(2) << precio << endl;
-    cout << "  stock:     " << stock << " unidades" << endl;
+    cout << "  ID:        " << id << endl;
+    cout << "  Nombre:    " << nombre << endl;
+    cout << "  Categoría: " << categoria << endl;
+    cout << "  Precio:    $" << fixed << setprecision(2) << precio << endl;
+    cout << "  Stock:     " << stock << " unidades" << endl;
     cout << "  ─────────────────────────────────────" << endl;
 }
 

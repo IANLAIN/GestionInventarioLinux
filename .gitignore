@@ -1,0 +1,26 @@
+# Archivos compilados
+bin/
+obj/
+*.o
+*.out
+*.exe
+
+# Archivos de datos (no versionamos la base de datos)
+productos.dat
+productos.txt
+log.txt
+respaldos/
+
+# Archivos temporales
+*.tmp
+*.swp
+*~
+
+# Configuración de IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

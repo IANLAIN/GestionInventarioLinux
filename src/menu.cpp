@@ -267,7 +267,7 @@ int Menu::leer_entero(const string& prompt) {
     while (!(cin >> valor)) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "  error: Ingrese un número válido" << endl;
+        cout << "  Error: Ingrese un número válido" << endl;
         cout << prompt;
     }
     
@@ -283,7 +283,7 @@ float Menu::leer_flotante(const string& prompt) {
     while (!(cin >> valor)) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "  error: Ingrese un número válido" << endl;
+        cout << "  Error: Ingrese un número válido" << endl;
         cout << prompt;
     }
     

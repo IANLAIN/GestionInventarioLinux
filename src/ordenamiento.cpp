@@ -2,11 +2,7 @@
 // implementacion de algoritmos de ordenamiento
 
 #include "../include/ordenamiento.h"
-
-using namespace std;
 #include "../include/constantes.h"
-
-using namespace std;
 #include <algorithm>
 
 using namespace std;
